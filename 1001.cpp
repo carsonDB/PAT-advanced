@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main(){
 	int a, b, sum, i, flag=1;
 	int stack[5], n;
