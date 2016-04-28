@@ -1,5 +1,5 @@
 /*
-  还有两个测试点没过！sigh！！！
+  还有两个测试点没过。
 */
 #include <iostream>
 #include <vector>
@@ -7,6 +7,10 @@
 #define Infinite 100000000
 using namespace std;
 
+int Cmax; // 每站容量
+int N; // 站数
+int Sp; // 问题站号
+int M; // 马路数量
 int perfectNum;
 
 class Road
@@ -75,10 +79,6 @@ int chooseOne(vector<Station*> list)
 
 int main()
 {
-	int Cmax; // 每站容量
-	int N; // 站数
-	int Sp; // 问题站号
-	int M; // 马路数量
 	// first line
 	cin >> Cmax >> N >> Sp >> M;
 	perfectNum = Cmax / 2;
@@ -104,7 +104,9 @@ int main()
 		if (node == 0)
 			break;
 	}
+
 	vector<int> output;
+	int sendTo = 0, takeBack = 0;
 	node = Sp;
 	while (node){
 		output.push_back(node);
@@ -112,17 +114,13 @@ int main()
 	}
 	// send to
 	if (list[Sp]->adjust < 0)
-		cout << -list[Sp]->adjust << " ";
+		sendTo = -list[Sp]->adjust;
 	else
-		cout << 0 << " ";
-	cout << 0;
+		takeBack = list[Sp]->adjust;
+	cout << sendTo << " " << 0;
 	for (int i = output.size() - 1; i >= 0; i--){
 		cout << "->" << output[i];
 	}
-	// take back
-	if (list[Sp]->adjust >= 0)
-		cout << " " << list[Sp]->adjust;
-	else
-		cout << " " << 0;
+	cout << " " << takeBack << endl;
 	return 0;
 }
