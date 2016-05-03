@@ -1,9 +1,6 @@
 /*
 将十进制转换成二进制
-note：
-  printf("%c", 'A' + ans[i] - 10);
-  cout << 'A' + ans[i] - 10;
-  上述两式区别在哪
+注意char和ascii编号的格式问题
 */
 #include <iostream>
 #include <cstdio>
@@ -18,8 +15,8 @@ void output(int n)
     if (ans[i] < 10)
       cout << ans[i];
     else
-      printf("%c", 'A' + ans[i] - 10);
-      // 14行改成右边，就会报错：cout << 'A' + ans[i] - 10;
+      cout << (char)('A' - 10 + ans[i]); // 注意若不加char转换，会输出ascii编号
+      // printf("%c", 'A' + ans[i] - 10); 这样也可以
   }
 }
 
